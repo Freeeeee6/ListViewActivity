@@ -9,6 +9,8 @@ import android.R.drawable;
 import android.R.string;
 import android.app.Activity;
 import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -28,8 +30,11 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
+	public static NotificationManager manager;
+	public static Notification notification;
 	private List<Fruit> l = new ArrayList<Fruit>();	
 	private MyReceive mmr = new MyReceive();
+	//private Context = MainActivity.this;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +57,31 @@ public class MainActivity extends Activity {
 		
 		ConnectivityManager cm = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
 		NetworkInfo ni = cm.getActiveNetworkInfo();
-//		ni.isAvailable() 
+//		ni.isAvailable()
+
+		manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		notification = new Notification(R.drawable.abc_ic_menu_cut_mtrl_alpha , "This is ticker text",
+				System.currentTimeMillis());
+		notification.setLatestEventInfo(MainActivity.this, "This is content title", "This is content text", null);
+
+		new Thread(){
+			public void run(){
+				try {
+					int i =1;
+
+					while(true) {
+						manager.notify(i, notification);
+						Log.e("Test Thread", "22");
+
+						Thread.sleep(1000);
+
+						manager.cancel(i++);
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
 	}
 	
 	class MyReceive extends BroadcastReceiver{
@@ -61,7 +90,7 @@ public class MainActivity extends Activity {
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
 			if( intent.getAction() == "android.net.conn.CONNECTIVITY_CHANGE" )
-				Toast.makeText(context, "Õ¯¬Á±‰∂Ø", Toast.LENGTH_SHORT).show();
+				Toast.makeText(context, "ÁΩëÁªúÂèòÂä®", Toast.LENGTH_SHORT).show();
 		}
 		
 	}

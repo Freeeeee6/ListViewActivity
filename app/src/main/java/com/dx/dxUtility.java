@@ -13,7 +13,7 @@ public final class dxUtility {
 	}
 
 	/** 
-	 * dp转成px 
+	 * dp杞垚px 
 	 * @param dipValue 
 	 * @return 
 	 */  
@@ -23,7 +23,7 @@ public final class dxUtility {
 	}  
 	  
 	/** 
-	 * px转成dp 
+	 * px杞垚dp 
 	 * @param pxValue 
 	 * @return 
 	 */  
