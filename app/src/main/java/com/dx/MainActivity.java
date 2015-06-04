@@ -15,6 +15,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -30,8 +31,8 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
-	public static NotificationManager manager;
-	public static Notification notification;
+	public NotificationManager manager;
+	public Notification notification;
 	private List<Fruit> l = new ArrayList<Fruit>();	
 	private MyReceive mmr = new MyReceive();
 	//private Context = MainActivity.this;
@@ -63,6 +64,11 @@ public class MainActivity extends Activity {
 		notification = new Notification(R.drawable.abc_ic_menu_cut_mtrl_alpha , "This is ticker text",
 				System.currentTimeMillis());
 		notification.setLatestEventInfo(MainActivity.this, "This is content title", "This is content text", null);
+        notification.ledARGB = Color.YELLOW;
+        notification.ledOffMS = 1000;
+        notification.ledOnMS = 1000;
+        notification.flags = Notification.FLAG_SHOW_LIGHTS;
+
 
 		new Thread(){
 			public void run(){
@@ -82,6 +88,8 @@ public class MainActivity extends Activity {
 				}
 			}
 		}.start();
+
+
 	}
 	
 	class MyReceive extends BroadcastReceiver{
