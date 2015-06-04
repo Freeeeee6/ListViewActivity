@@ -212,7 +212,7 @@ public class MainActivity extends Activity {
 			}
 		}).start();
 
-
+		Toast.makeText(MainActivity.this,"请求失败",Toast.LENGTH_SHORT).show();
 	}
 
 	private void parseXMLWithPull(String xmlData) {
