@@ -1546,7 +1546,7 @@ containing a value of this type.
         public static final int icon=0x7f0b002b;
         public static final int ifRoom=0x7f0b0018;
         public static final int image=0x7f0b0028;
-        public static final int iv=0x7f0b0051;
+        public static final int iv=0x7f0b0050;
         public static final int list=0x7f0b004f;
         public static final int listMode=0x7f0b0009;
         public static final int list_item=0x7f0b002a;
@@ -1586,12 +1586,11 @@ containing a value of this type.
         public static final int title=0x7f0b002c;
         public static final int title_template=0x7f0b002f;
         public static final int topPanel=0x7f0b002e;
-        public static final int tv=0x7f0b0052;
+        public static final int tv=0x7f0b0051;
         public static final int up=0x7f0b0008;
         public static final int useLogo=0x7f0b0012;
         public static final int withText=0x7f0b001a;
         public static final int wrap_content=0x7f0b001d;
-        public static final int wv=0x7f0b0050;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur=0x7f090001;
