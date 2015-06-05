@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="E:\Android\Demo\ListViewActivity2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="E:\Android\Demo\ListViewActivity2\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-0738ee11a4eb2792fd532a2b94c14e214508d151.jar" />
-    </item>
-    <item
         jar="E:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -21,6 +14,20 @@
         revision="22.0.1"
         sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
         <dex dex="E:\Android\Demo\ListViewActivity2\app\build\intermediates\pre-dexed\debug\classes-454dcb0dca275dd633ab93358f3bb5af3b39c51d.jar" />
+    </item>
+    <item
+        jar="E:\Android\Demo\ListViewActivity2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="E:\Android\Demo\ListViewActivity2\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-0738ee11a4eb2792fd532a2b94c14e214508d151.jar" />
+    </item>
+    <item
+        jar="E:\Android\Demo\ListViewActivity2\libs\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="E:\Android\Demo\ListViewActivity2\app\build\intermediates\pre-dexed\debug\gson-2.2.4-dd1b68a89eb39ee4915815af175fd0c29dcc1048.jar" />
     </item>
     <item
         jar="E:\Android\Demo\ListViewActivity2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"

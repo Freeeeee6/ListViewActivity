@@ -40,12 +40,17 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -188,21 +193,25 @@ public class MainActivity extends Activity {
 				try {
 					HttpClient httpClient = new DefaultHttpClient();
 //					HttpGet httpGet = new HttpGet("http://www.baidu.com");
-					HttpGet httpGet = new HttpGet("http://127.0.0.1/get_data.xml");
+//					HttpGet httpGet = new HttpGet("http://192.168.1.19/get_data.xml");
+					HttpGet httpGet = new HttpGet("http://192.168.1.19/get_data.json");
 					HttpResponse httpResponse = httpClient.execute(httpGet);
 					if (httpResponse.getStatusLine().getStatusCode() == 200) {
 // 请求和响应都成功了
 						HttpEntity entity = httpResponse.getEntity();
 						String response = EntityUtils.toString(entity,
 								"utf-8");
-						
-						parseXMLWithPull(response);
+
 						Message message = new Message();
 						message.what = SHOW_RESPONSE2;
 // 将服务器返回的结果存放到Message中
 						message.obj = response.toString();
 						handler.sendMessage(message);
 
+//						parseXMLWithPull(response);
+//						parseJSONWithJSONObject(response);
+						parseJSONWithGSON(response);
+						
 						Toast.makeText(MainActivity.this,"请求成功",Toast.LENGTH_SHORT).show();
 					}
 					else
@@ -214,6 +223,34 @@ public class MainActivity extends Activity {
 		}).start();
 
 
+	}
+
+	private void parseJSONWithGSON(String jsonData) {
+		Gson gson = new Gson();
+		List<App> appList = gson.fromJson(jsonData, new
+				TypeToken<List<App>>() {}.getType());
+		for (App app : appList) {
+			Log.e("GMainActivity", "id is " + app.getId());
+			Log.e("GMainActivity", "name is " + app.getName());
+			Log.e("GMainActivity", "version is " + app.getVersion());
+		}
+	}
+
+	private void parseJSONWithJSONObject(String jsonData) {
+		try {
+			JSONArray jsonArray = new JSONArray(jsonData);
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject jsonObject = jsonArray.getJSONObject(i);
+				String id = jsonObject.getString("id");
+				String name = jsonObject.getString("name");
+				String version = jsonObject.getString("version");
+				Log.e("MainActivity", "id is " + id);
+				Log.e("MainActivity", "name is " + name);
+				Log.e("MainActivity", "version is " + version);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void parseXMLWithPull(String xmlData) {
@@ -243,9 +280,9 @@ public class MainActivity extends Activity {
 // 完成解析某个结点
 						case XmlPullParser.END_TAG: {
 							if ("app".equals(nodeName)) {
-								Log.d("MainActivity", "id is " + id);
-								Log.d("MainActivity", "name is " + name);
-								Log.d("MainActivity", "version is " + version);
+								Log.e("MainActivity", "id is " + id);
+								Log.e("MainActivity", "name is " + name);
+								Log.e("MainActivity", "version is " + version);
 							}
 							break;
 						}
